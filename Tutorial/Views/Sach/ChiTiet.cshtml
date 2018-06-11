@@ -8,11 +8,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>ChiTiet</title>
+    <title>Chi tiết sách</title>
 </head>
 <body>
-    <div> 
-        Đây là sách tên: @ViewBag.TenSach;
+    <div>
+        <img src="@Url.Content("~/images/"+@ViewBag.sach.getHinhAnh())" alt="" style="width:60px; height: 80px" />
+        <div>@ViewBag.sach.getTenSach()</div>
+        <div>Giá bán: @String.Format("{0:0,0}", (@ViewBag.sach.getGiaBan() * (100 - @ViewBag.sach.getKhuyenMai())) / 100) VNĐ</div>
+        <div>Tác giả: @ViewBag.sach.getTacGia()</div>
+        Nội dung:
+        <div> @ViewBag.sach.getMoTa()</div>
     </div>
 </body>
 </html>
