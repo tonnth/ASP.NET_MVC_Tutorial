@@ -9,13 +9,16 @@ namespace Tutorial.Controllers
     public class SachController : Controller
     {
         // GET: Sach
-        public String Index()
+        public ActionResult Index()
         {
-            return "Đây là phương thức Index của Controller Sach";
+            ViewBag.listSach = new List<String> { "Conan", "Doraemon", "Pokemon", "Dragon Balls", "One Piece" };
+            return View();
         }
-        public String ChiTiet()
+        public ActionResult ChiTiet(String TenSach)
         {
-            return "Đây là phương thức ChiTiet của Controller Sach";
+            ViewBag.TenSach = TenSach;
+            return View();
         }
+      
     }
 }

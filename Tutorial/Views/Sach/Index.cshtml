@@ -1,0 +1,19 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Các đầu sách</h2>
+<ul>
+@foreach (string sach in ViewBag.listSach)
+{
+    <li>
+        <a href="@Url.Action("ChiTiet","Sach",new{@TenSach=sach})">@sach</a>
+    </li>
+}
+</ul>
+
+
+
