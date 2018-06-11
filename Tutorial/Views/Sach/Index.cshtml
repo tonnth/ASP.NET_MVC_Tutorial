@@ -7,10 +7,12 @@
 
 <h2>Các đầu sách</h2>
 <ul>
-@foreach (string sach in ViewBag.listSach)
+@foreach (var sach in ViewBag.listSach)
 {
     <li>
-        <a href="@Url.Action("ChiTiet","Sach",new{@TenSach=sach})">@sach</a>
+        <a href="@Url.Action("ChiTiet","Sach",new{@sach=sach})"><img src="@Url.Content("~/images/"+sach.getHinhAnh())" alt="" style="width:50px; height: 50px" /></a>
+        <div>@sach.getTenSach()</div>
+        <div> @String.Format("{0:0,0}", (@sach.getGiaBan() * (100 - @sach.getKhuyenMai())) / 100) VNĐ</div>
     </li>
 }
 </ul>

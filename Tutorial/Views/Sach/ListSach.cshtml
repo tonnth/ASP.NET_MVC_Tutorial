@@ -1,0 +1,15 @@
+﻿<ul>
+    @foreach (var sach in ViewBag.listSach)
+    {
+    <div>
+
+        <a href="@Url.Action("ChiTiet","Sach",new{ @maSach = sach.getMaSach()})">
+            <img src="@Url.Content("~/images/"+sach.getHinhAnh())" alt="" style="width:30px; height: 40px" />
+            <div>@sach.getTenSach()</div>
+            <div> @String.Format("{0:0,0}", (@sach.getGiaBan() * (100 - @sach.getKhuyenMai())) / 100) VNĐ</div>
+        </a>
+        
+
+    </div>
+    }
+</ul>
