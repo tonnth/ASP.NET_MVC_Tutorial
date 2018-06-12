@@ -1,0 +1,49 @@
+﻿.item-book-container {
+    display: flex;
+    justify-content: center;
+    width: 450px;
+    height: 350px;
+}
+
+    .item-book-container a {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .item-book-container a:hover {
+        text-decoration: none;
+    }
+
+.item-book-img {
+    width: 100px;
+    height: 150px;
+}
+
+.item-book-container div {
+    margin-top: 20px;
+    font-size: 20px;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+
+
+.item-book-container div:hover {
+    color: orange;
+    text-decoration: none;
+}
+
+.listbook-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.
