@@ -10,6 +10,7 @@ namespace Tutorial.Dao
 {
     public class SachDAO
     {
+        static int numOfBook = 0;
         public static List<Sach> getSachFromDB(String sql)
         {
             MySqlConnection connection = DBConnect.getConnection();
@@ -25,9 +26,12 @@ namespace Tutorial.Dao
             connection.Close();
             return list;
         }
-        public static List<Sach> getListSach()
+        public static List<Sach> getListSach(int page = 1)
         {
-            String sql = "Select * from Sach where TrangThai <> -1";
+            int numOfBook = 24;
+            int row = numOfBook * (page - 1);
+            String pagination = " LIMIT " + row+"," + numOfBook;
+            String sql = "Select * from Sach where TrangThai <> -1" + pagination;
             return getSachFromDB(sql);
         }
         public static Sach getSach(int maSach)
@@ -46,6 +50,22 @@ namespace Tutorial.Dao
             rs.Close();
             connection.Close();
             return sach;
+        }
+
+        public static int getNumberOfBook()
+        {
+            String sql = "Select count(*) as NUM from Sach where TrangThai <> -1";
+            MySqlConnection connection = DBConnect.getConnection();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            MySqlDataReader rs = cmd.ExecuteReader();
+            while (rs.Read())
+            {
+                numOfBook= rs.GetInt32("NUM");
+            }
+            rs.Close();
+            connection.Close();
+            return numOfBook;
         }
     }
 }

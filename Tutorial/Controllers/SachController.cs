@@ -26,6 +26,7 @@ namespace Tutorial.Controllers
         {
             List<Sach> listSach = new List<Sach>();
             ViewBag.listSach = SachDAO.getListSach();
+            ViewBag.numOfBook = SachDAO.getNumberOfBook();
             return PartialView();
         }
 
