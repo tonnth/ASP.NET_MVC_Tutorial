@@ -1,17 +1,19 @@
 ﻿<link href="~/Content/sachStyle.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<ul class="container">
+    <div class="row">
+        @{
+            int i = 0;
+            foreach (var sach in ViewBag.listSach)
+            {
 
-<ul class="listbook-container">
-    @{
-        int i = 0;
-        foreach (var sach in ViewBag.listSach)
-        {
-
-            <div class="item-book-container">
-                <a href="@Url.Action("ChiTiet", "Sach", new { @maSach = sach.getMaSach() })">
-                    <img src="@Url.Content("~/images/" + sach.getHinhAnh())" alt="" 
-                         class="item-book-img"/>
-                    <div>@sach.getTenSach()</div>
-                    <div> @String.Format("{0:0,0}", (@sach.getGiaBan() * (100 - @sach.getKhuyenMai())) / 100) VNĐ</div>
-                </a>
-            </div>} }
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 item-book-container">
+                    <a href="@Url.Action("ChiTiet", "Sach", new { @maSach = sach.getMaSach() })">
+                        <img src="@Url.Content("~/images/" + sach.getHinhAnh())" alt=""
+                             class="item-book-img" />
+                        <div>@sach.getTenSach()</div>
+                        <div> @String.Format("{0:0,0}", (@sach.getGiaBan() * (100 - @sach.getKhuyenMai())) / 100) VNĐ</div>
+                    </a>
+                </div>} }
+    </div>
 </ul>
