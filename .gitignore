@@ -1,4 +1,4 @@
-###################
+﻿###################
 # compiled source #
 ###################
 *.com
@@ -75,3 +75,5 @@ _[Ss]cripts
 *.dot[Cc]over
 .vs/Tutorial/v15/Server/sqlite3/db.lock
 img
+.vs
+images
