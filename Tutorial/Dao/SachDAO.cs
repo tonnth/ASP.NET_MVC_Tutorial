@@ -41,17 +41,7 @@ namespace Tutorial.Dao
             Sach sach = null; ;
             while (rs.Read())
             {
-                sach = new Sach();
-                sach.setMaSach(rs.GetInt32("MaSach"));
-                sach.setTenSach(rs.GetString("TenSach"));
-                sach.setTacGia(rs.GetString("TacGia"));
-                sach.setHinhAnh(rs.GetString("HinhAnh"));
-                sach.setMoTa(rs.GetString("MoTa"));
-                sach.setSoLuongTon(rs.GetInt32("SoLuongTon"));
-                sach.setGiaBan(rs.GetInt32("GiaBan"));
-                sach.setTrangThai(rs.GetInt32("TrangThai"));
-                sach.setKhuyenMai(rs.GetInt32("KhuyenMai"));
-                sach.setMaTheLoai(rs.GetInt32("MaTheLoai"));
+                sach = new Sach(rs);
             }
             rs.Close();
             connection.Close();

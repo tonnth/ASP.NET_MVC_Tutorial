@@ -10,7 +10,7 @@ namespace Tutorial.Connect
         public static MySqlConnection getConnection()
         {
             MySqlConnection connect = null;
-            connect = new MySqlConnection("server=localhost;user id=root;password=1234;database=websitebansach; SslMode=none");
+            connect = new MySqlConnection("server=localhost;user id=root;password=root;database=websitebansach;SslMode=none");
             return connect;
         }
     }
