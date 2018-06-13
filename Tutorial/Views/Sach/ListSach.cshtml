@@ -4,7 +4,6 @@
     <div class="row">
         <div>@ViewBag.numOfBook</div>
         @{
-            int i = 0;
             foreach (var sach in ViewBag.listSach)
             {
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 item-book-container">
@@ -16,4 +15,28 @@
                     </a>
                 </div>} }
     </div>
-</ul>
+
+    <ul class="pagination">
+        @{
+            int pages = ViewBag.numOfBook / 24;
+            int currentPage = ViewBag.currentPage;
+            if (ViewBag.numOfBook % 24 > 0) { pages++; }
+            for (int i = 1; i <= pages; i++)
+            {
+                if (i == currentPage)
+                {
+                    <li class="active">
+                        <a href="@Url.Action("ListSach", "Sach", new { @page = i})">@i</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="@Url.Action("ListSach", "Sach", new { @page = i})">@i</a>
+                    </li>
+                }
+
+            }
+        }
+    </ul>
+

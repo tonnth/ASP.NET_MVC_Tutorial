@@ -22,10 +22,11 @@ namespace Tutorial.Controllers
             ViewBag.sach = SachDAO.getSach(maSach);
             return View();
         }
-        public PartialViewResult ListSach()
+        public PartialViewResult ListSach(int page = 1)
         {
             List<Sach> listSach = new List<Sach>();
-            ViewBag.listSach = SachDAO.getListSach();
+            ViewBag.currentPage = page;
+            ViewBag.listSach = SachDAO.getListSach(page);
             ViewBag.numOfBook = SachDAO.getNumberOfBook();
             return PartialView();
         }
