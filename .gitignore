@@ -75,11 +75,5 @@ _[Ss]cripts
 *.dot[Cc]over
 .vs/Tutorial/v15/Server/sqlite3/db.lock
 img
-<<<<<<< HEAD
 images
-v15
 .vs
-=======
-.vs
-images
->>>>>>> B06_AddStyleForView
