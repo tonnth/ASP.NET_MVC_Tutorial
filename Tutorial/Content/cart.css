@@ -1,0 +1,10 @@
+﻿a.cart-in{
+    width: 25px;
+    height: 25px;
+    background: url(../images/cart.png)no-repeat ;
+    display:block;
+    text-decoration:none;
+    background-size: contain;
+    margin-left:250px;
+}
+
