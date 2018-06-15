@@ -70,5 +70,26 @@ namespace Tutorial.Controllers
             }
             return View();
         }
+        public ActionResult DangNhap()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DangNhap(FormCollection f)
+        {
+            //Kiem tra email va MatKhau co ton tai trong csdl hay chu
+            KhachHang kh = null;
+            kh = KhachHangDAO.loginKhachHang(f["email"].ToString(), MD5.encryption(f["pass"].ToString()));
+            if (kh != null)
+            {
+                Session["user"] = kh;
+                return Redirect("~/Home/index");
+            }
+            else
+            {
+                ViewBag.message = "Email hoac mat khau khong ton tai";
+            }
+            return View();
+        }
 	}
 }

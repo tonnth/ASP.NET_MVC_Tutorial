@@ -43,5 +43,30 @@ namespace Tutorial.Dao
             connection.Close();
             return true;
         }
+        public static KhachHang loginKhachHang(String email, String matKhau)
+        {
+            KhachHang kh = null;
+            MySqlConnection connection = DBConnect.getConnection();
+            connection.Open();
+            String sql = "Select * from KhachHang where Email=?Email and MatKhau=?MatKhau";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("?Email", email);
+            cmd.Parameters.AddWithValue("?MatKhau", matKhau);
+            MySqlDataReader rs = cmd.ExecuteReader();
+            while (rs.Read())
+            {
+                kh = new KhachHang();
+                kh.setMaKhachHang(rs.GetInt32("MaKhachHang"));
+                kh.setHoTenKhachHang(rs.GetString("HoTenKhachHang"));
+                kh.seteMail(rs.GetString("Email"));
+                kh.setMatKhau(rs.GetString("MatKhau"));
+                kh.setTienNo(rs.GetInt32("TienNo"));
+                kh.setLoaiKhachHang(rs.GetInt32("LoaiKhachHang"));
+                kh.setSoXuTichLuy(rs.GetInt32("SoXuTichLuy"));
+            }
+            rs.Close();
+            connection.Close();
+            return kh;
+        }
     }
 }
