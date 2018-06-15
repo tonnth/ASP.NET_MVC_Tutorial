@@ -1,0 +1,26 @@
+﻿<html>
+<head>
+    <title>Đăng nhập</title>
+</head>
+<body>
+    <form action="/KhachHang/DangNhap" method="POST">
+        @if (ViewBag.message != null)
+        {
+            <span>@ViewBag.message</span>
+        }
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" />
+        </div>
+        <div>
+            <label>Mật khẩu</label>
+            <input type="password" name="pass" />
+        </div>
+        <div>
+            <input type="submit" value="Đăng nhập" />
+        </div>
+    </form>
+</body>
+</html>
+
+

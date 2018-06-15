@@ -21,12 +21,16 @@
         }
     }
     @Html.Action("Search", "Home")
-    <a href="" class="cart-in">
+    <a href="~/Cart/thongtingiohang" class="cart-in">
         @if (cart.countItem() > 0)
         {
             <span style="margin-left:25px;font-size:20px">@cart.countItem()</span>
         }
     </a>
+    @if (Session["user"] == null)
+    {
+        <a href="KhachHang/DangNhap">Đăng nhập</a>
+    }
     @Html.Action("ListSach", "Sach")
 </body>
 </html>

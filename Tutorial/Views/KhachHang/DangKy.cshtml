@@ -1,0 +1,51 @@
+﻿<html>
+<head>
+    <title>Dang Ky</title>
+</head>
+<body>
+    <form action="/KhachHang/DangKy" method="POST">
+        @if (ViewBag.error != null)
+        {
+            <span>@ViewBag.error</span>
+        }
+        <div>
+            <label>Họ và tên</label>
+            <input type="text" name="username" />
+            @if (ViewBag.message1 != null)
+            {
+                <span>@ViewBag.message1</span>
+            }
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" />
+            @if (ViewBag.message2 != null)
+            {
+                <span>@ViewBag.message2</span>
+            }
+        </div>
+        <div>
+            <label>Mật khẩu</label>
+            <input type="password" name="pass" />
+            @if (ViewBag.message3 != null)
+            {
+                <span>@ViewBag.message3</span>
+            }
+        </div>
+        <div>
+            <label>Xác nhận mật khẩu</label>
+            <input type="password" name="re_pass" />
+            @if (ViewBag.message4 != null)
+            {
+                <span>@ViewBag.message4</span>
+            }
+        </div>
+        <div>
+            <input type="submit" value="Dang ky" />
+        </div>
+    </form>
+</body>
+</html>
+
+
+
