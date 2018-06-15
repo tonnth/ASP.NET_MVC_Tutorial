@@ -67,5 +67,14 @@ namespace Tutorial.Dao
             connection.Close();
             return numOfBook;
         }
+        public static void updateLike(int value, int maSach)
+        {
+            String sql = "Update Sach set YeuThich=" + value + " Where MaSach=" + maSach;
+            MySqlConnection connection = DBConnect.getConnection();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }

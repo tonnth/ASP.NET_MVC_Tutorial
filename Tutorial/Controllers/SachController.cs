@@ -22,6 +22,7 @@ namespace Tutorial.Controllers
             ViewBag.sach = SachDAO.getSach(maSach);
             return View();
         }
+
         public PartialViewResult ListSach(int page = 1)
         {
             List<Sach> listSach = new List<Sach>();
@@ -31,5 +32,12 @@ namespace Tutorial.Controllers
             return PartialView();
         }
 
+        [HttpPost]
+        public ActionResult updateLike(int value, int maSach)
+        {
+            System.Diagnostics.Debug.WriteLine(value + ' ' + maSach);
+            SachDAO.updateLike(value, maSach);
+            return Json("chamara", JsonRequestBehavior.AllowGet);
+        }
     }
 }

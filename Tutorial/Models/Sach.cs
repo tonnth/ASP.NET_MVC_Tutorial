@@ -18,6 +18,7 @@ namespace Tutorial.Models
         private int trangThai;
         private int khuyenMai;
         private int maTheLoai;
+        private int yeuThich;
 
         public int getMaTheLoai()
         {
@@ -40,6 +41,7 @@ namespace Tutorial.Models
             trangThai = rs.GetInt32("TrangThai");
             khuyenMai = rs.GetInt32("KhuyenMai");
             maTheLoai = rs.GetInt32("MaTheLoai");
+            yeuThich = rs.GetInt32("YeuThich");
         }
         public Sach()
         {
@@ -133,6 +135,16 @@ namespace Tutorial.Models
         public void setKhuyenMai(int khuyenMai)
         {
             this.khuyenMai = khuyenMai;
+        }
+
+        public int getYeuThich()
+        {
+            return yeuThich;
+        }
+
+        public void setYeuThich(int value)
+        {
+            yeuThich = value;
         }
     }
 }
