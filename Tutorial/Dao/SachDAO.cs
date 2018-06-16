@@ -30,7 +30,7 @@ namespace Tutorial.Dao
         {
             int numOfBook = 24;
             int row = numOfBook * (page - 1);
-            String pagination = " LIMIT " + row+"," + numOfBook;
+            String pagination = " LIMIT " + row + "," + numOfBook;
             String sql = "Select * from Sach where TrangThai <> -1" + pagination;
             return getSachFromDB(sql);
         }
@@ -61,7 +61,7 @@ namespace Tutorial.Dao
             MySqlDataReader rs = cmd.ExecuteReader();
             while (rs.Read())
             {
-                numOfBook= rs.GetInt32("NUM");
+                numOfBook = rs.GetInt32("NUM");
             }
             rs.Close();
             connection.Close();
@@ -104,6 +104,19 @@ namespace Tutorial.Dao
             rs.Close();
             connection.Close();
             return sach;
+        }
+        //Cập nhật số lượng các đầu sách theo mã sách
+        public static bool capNhatSoLuong(int maSach, int soLuongTon)
+        {
+            MySqlConnection connection = DBConnect.getConnection();
+            connection.Open();
+            String sql = "Update Sach set SoLuongTon=?SoLuongTon where MaSach=?MaSach";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("?SoLuongTon", soLuongTon);
+            cmd.Parameters.AddWithValue("?MaSach", maSach);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+            return true;
         }
     }
 }
