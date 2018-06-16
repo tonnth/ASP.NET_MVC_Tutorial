@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 
 namespace Tutorial.tools
-
+{
     public class MD5
     {
         public static String encryption(String str)
@@ -23,3 +23,4 @@ namespace Tutorial.tools
             return sb.ToString();
         }
     }
+}
