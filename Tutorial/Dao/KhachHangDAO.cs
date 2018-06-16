@@ -26,6 +26,23 @@ namespace Tutorial.Dao
             }
             return false;
         }
+        //Lấy mã khách theo email
+        public static int getMaKhachHang(String email)
+        {
+            int maKhachHang = 0;
+            MySqlConnection connection = DBConnect.getConnection();
+            connection.Open();
+            String sql = "Select MaKhachHang from KhachHang where Email='" + email + "'";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            MySqlDataReader rs = cmd.ExecuteReader();
+            while (rs.Read())
+            {
+                maKhachHang = rs.GetInt32("MaKhachHang");
+            }
+            rs.Close();
+            connection.Close();
+            return maKhachHang;
+        }
         //Add khach hang
         public static bool insertKhachHang(KhachHang u)
         {
@@ -67,6 +84,19 @@ namespace Tutorial.Dao
             rs.Close();
             connection.Close();
             return kh;
+        }
+        public static bool capNhatKhachHang(int maKhachHang, int tienNo, int soXuTichLuy)
+        {
+            MySqlConnection connection = DBConnect.getConnection();
+            connection.Open();
+            String sql = "Update KhachHang set TienNo=?TienNo, SoXuTichLuy=?SoXuTichLuy where MaKhachHang=?MaKhachHang";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("?TienNo", tienNo);
+            cmd.Parameters.AddWithValue("?SoXuTichLuy", soXuTichLuy);
+            cmd.Parameters.AddWithValue("?MaKhachHang", maKhachHang);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+            return true;
         }
     }
 }

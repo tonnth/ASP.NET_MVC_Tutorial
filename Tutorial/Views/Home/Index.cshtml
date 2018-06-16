@@ -29,7 +29,8 @@
     </a>
     @if (Session["user"] == null)
     {
-        <a href="KhachHang/DangNhap">Đăng nhập</a>
+        <a href="~/KhachHang/DangNhap">Đăng nhập</a>
+        <a href="~/KhachHang/DangKy">Đăng ký</a>
     }
     @Html.Action("ListSach", "Sach")
 </body>

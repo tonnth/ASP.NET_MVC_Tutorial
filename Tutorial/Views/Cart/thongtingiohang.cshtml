@@ -6,6 +6,7 @@
 <body>
     @{
         Cart cart = (Cart)Session["cart"];
+        int tongTienThanhToan = 0;
     }
     <table>
         <tr>
@@ -18,14 +19,16 @@
         {
             int tienSauKhuyenMai = item.getSach().getGiaBan() * (100 - item.getSach().getKhuyenMai()) / 100;
             int tongTien = item.getSoLuongBan() * tienSauKhuyenMai;
+            tongTienThanhToan += tongTien;
             <tr>
                 <td>@item.getSach().getTenSach()</td>
-                <td><img src="@Url.Content("~/img/"+item.getSach().getHinhAnh())" style="width:60px;height:80px" /></td>
+                <td><img src="@Url.Content("~/images/"+item.getSach().getHinhAnh())" style="width:60px;height:80px" /></td>
                 <td>@item.getSoLuongBan()</td>
-                <td>@tongTien</td>
+                <td>@String.Format("{0:0,0}", tongTien) VNĐ</td>
             </tr>
         }
     </table>
-    <div><a href="">Thanh toán</a></div>
+    <div>Tổng tiền hóa đơn: @String.Format("{0:0,0}", tongTienThanhToan) VNĐ</div>
+    <div><a href="~/HoaDon/xacnhanmuahang">Thanh toán</a></div>
 </body>
 </html>

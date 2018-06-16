@@ -10,6 +10,8 @@ namespace Tutorial.Controllers
 {
     public class CartController : Controller
     {
+        //
+        // GET: /Cart/
         public ActionResult themgiohang(int maSach = 0, int soLuongMua = 0)
         {
             Cart cart = (Cart)Session["cart"];
@@ -28,5 +30,5 @@ namespace Tutorial.Controllers
         {
             return View();
         }
-	}
+    }
 }

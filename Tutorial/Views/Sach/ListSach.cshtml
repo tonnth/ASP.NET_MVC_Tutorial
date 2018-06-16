@@ -1,4 +1,5 @@
-﻿<link href="~/Content/sachStyle.css" rel="stylesheet" />
+﻿@using Tutorial.Models
+<link href="~/Content/sachStyle.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -35,9 +36,8 @@
 </script>
 <ul class="container">
     <div class="row">
-        <div>@ViewBag.numOfBook</div>
         @{
-            foreach (var sach in ViewBag.listSach)
+            foreach (Sach sach in ViewBag.listSach)
             {
                 
                     String color = "rgb(0,0,0)";
@@ -59,9 +59,11 @@
                         <div> @String.Format("{0:0,0}", (@sach.getGiaBan() * (100 - @sach.getKhuyenMai())) / 100) VNĐ</div>
                     </a>
                     <a href="@Url.Action("themgiohang", "Cart", new {@maSach = sach.getMaSach(),@soLuongMua=1})" style="margin-top:310px; background-color:orange;margin-left:-70px">Thêm hàng</a>
-                </div>} }
-    </div>
+                </div>
 
+            }
+        }
+    </div>
     <ul class="pagination">
         @{
             int pages = ViewBag.numOfBook / 24;
@@ -87,3 +89,4 @@
     </ul>
 
 </ul>
+

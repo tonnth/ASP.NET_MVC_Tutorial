@@ -40,5 +40,16 @@ namespace Tutorial.Models
             count = cartItems.Count();
             return count;
         }
+        //Phương thức tính tổng tiền
+        public double total()
+        {
+            int count = 0;
+            foreach (Item item in cartItems.Values)
+            {
+                int khuyenMai = (item.getSach().getGiaBan() * item.getSoLuongBan() * item.getSach().getKhuyenMai()) / 100;
+                count += item.getSach().getGiaBan() * item.getSoLuongBan() - khuyenMai;
+            }
+            return count;
+        }
     }
 }
