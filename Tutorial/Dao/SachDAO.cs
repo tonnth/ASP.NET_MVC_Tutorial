@@ -34,6 +34,13 @@ namespace Tutorial.Dao
             String sql = "Select * from Sach where TrangThai <> -1" + pagination;
             return getSachFromDB(sql);
         }
+
+        public static List<Sach> getListSachTimKiem(String tukhoa = "")
+        {
+            String sql = "Select * From Sach where TenSach like N'%" + tukhoa + "%'";
+            return getSachFromDB(sql);
+        }
+
         public static Sach getSach(int maSach)
         {
             MySqlConnection connection = DBConnect.getConnection();

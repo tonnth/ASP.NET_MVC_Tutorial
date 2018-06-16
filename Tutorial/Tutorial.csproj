@@ -202,6 +202,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Sach\ListSach.cshtml" />
+    <Content Include="Views\Sach\ListSachTimKiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

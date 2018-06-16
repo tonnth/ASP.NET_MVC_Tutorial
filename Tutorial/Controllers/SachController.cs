@@ -39,5 +39,12 @@ namespace Tutorial.Controllers
             SachDAO.updateLike(value, maSach);
             return Json("chamara", JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult ListSachTimKiem(FormCollection f)
+        {
+            ViewBag.listSach = SachDAO.getListSachTimKiem(f["chuoiTimKiem"]);
+            return PartialView();
+        }
     }
 }
