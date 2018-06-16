@@ -67,7 +67,7 @@ namespace Tutorial.Dao
             connection.Close();
             return numOfBook;
         }
-<<<<<<< HEAD
+
         public static void updateLike(int value, int maSach)
         {
             String sql = "Update Sach set YeuThich=" + value + " Where MaSach=" + maSach;
@@ -76,7 +76,8 @@ namespace Tutorial.Dao
             MySqlCommand cmd = new MySqlCommand(sql, connection);
             cmd.ExecuteNonQuery();
             connection.Close();
-=======
+        }
+
         public static Sach getSachCanLay(int maSach)
         {
             MySqlConnection connection = DBConnect.getConnection();
@@ -103,7 +104,6 @@ namespace Tutorial.Dao
             rs.Close();
             connection.Close();
             return sach;
->>>>>>> BT13_CartDetail
         }
     }
 }
