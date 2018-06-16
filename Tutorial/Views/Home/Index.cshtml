@@ -1,4 +1,4 @@
-﻿
+﻿@using Tutorial.Models;
 @{
     Layout = null;
 }
@@ -7,15 +7,30 @@
 
 <html>
 <head>
-
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/cart.css" rel="stylesheet" />
     <title>Index</title>
 </head>
 <body>
+    @{
+        Cart cart = (Cart)Session["cart"];
+        if (cart == null)
+        {
+            cart = new Cart();
+            Session["cart"] = cart;
+        }
+    }
     @Html.Action("Search", "Home")
-    <div>
-        Chào mừng bạn đến với nhà sách ABC
-    </div>
+    <a href="~/Cart/thongtingiohang" class="cart-in">
+        @if (cart.countItem() > 0)
+        {
+            <span style="margin-left:25px;font-size:20px">@cart.countItem()</span>
+        }
+    </a>
+    @if (Session["user"] == null)
+    {
+        <a href="KhachHang/DangNhap">Đăng nhập</a>
+    }
     @Html.Action("ListSach", "Sach")
 </body>
 </html>

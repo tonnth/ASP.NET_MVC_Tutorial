@@ -1,0 +1,31 @@
+﻿@using Tutorial.Models
+<html>
+<head>
+    <title>Thông tin giỏ hàng</title>
+</head>
+<body>
+    @{
+        Cart cart = (Cart)Session["cart"];
+    }
+    <table>
+        <tr>
+            <th>Tên sách</th>
+            <th>Hình ảnh</th>
+            <th>Số lượng mua</th>
+            <th>Tổng tiền</th>
+        </tr>
+        @foreach (Item item in cart.getCartItems().Values)
+        {
+            int tienSauKhuyenMai = item.getSach().getGiaBan() * (100 - item.getSach().getKhuyenMai()) / 100;
+            int tongTien = item.getSoLuongBan() * tienSauKhuyenMai;
+            <tr>
+                <td>@item.getSach().getTenSach()</td>
+                <td><img src="@Url.Content("~/img/"+item.getSach().getHinhAnh())" style="width:60px;height:80px" /></td>
+                <td>@item.getSoLuongBan()</td>
+                <td>@tongTien</td>
+            </tr>
+        }
+    </table>
+    <div><a href="">Thanh toán</a></div>
+</body>
+</html>

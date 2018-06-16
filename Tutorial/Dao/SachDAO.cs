@@ -67,6 +67,7 @@ namespace Tutorial.Dao
             connection.Close();
             return numOfBook;
         }
+<<<<<<< HEAD
         public static void updateLike(int value, int maSach)
         {
             String sql = "Update Sach set YeuThich=" + value + " Where MaSach=" + maSach;
@@ -75,6 +76,34 @@ namespace Tutorial.Dao
             MySqlCommand cmd = new MySqlCommand(sql, connection);
             cmd.ExecuteNonQuery();
             connection.Close();
+=======
+        public static Sach getSachCanLay(int maSach)
+        {
+            MySqlConnection connection = DBConnect.getConnection();
+            connection.Open();
+            String sql = "Select * from Sach where MaSach=?MaSach";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("?MaSach", maSach);
+            MySqlDataReader rs = cmd.ExecuteReader();
+            Sach sach = null; ;
+            while (rs.Read())
+            {
+                sach = new Sach();
+                sach.setMaSach(rs.GetInt32("MaSach"));
+                sach.setTenSach(rs.GetString("TenSach"));
+                sach.setTacGia(rs.GetString("TacGia"));
+                sach.setHinhAnh(rs.GetString("HinhAnh"));
+                sach.setMoTa(rs.GetString("MoTa"));
+                sach.setSoLuongTon(rs.GetInt32("SoLuongTon"));
+                sach.setGiaBan(rs.GetInt32("GiaBan"));
+                sach.setTrangThai(rs.GetInt32("TrangThai"));
+                sach.setKhuyenMai(rs.GetInt32("KhuyenMai"));
+                sach.setMaTheLoai(rs.GetInt32("MaTheLoai"));
+            }
+            rs.Close();
+            connection.Close();
+            return sach;
+>>>>>>> BT13_CartDetail
         }
     }
 }
