@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Tutorial.Dao;
+using Tutorial.Models;
+using Tutorial.tools;
 
 namespace Tutorial.Controllers
 {
@@ -55,6 +58,7 @@ namespace Tutorial.Controllers
                     kh.setLoaiKhachHang(0);
                     kh.setSoXuTichLuy(0);
                     KhachHangDAO.insertKhachHang(kh);
+                    kh.setMaKhachHang(KhachHangDAO.getMaKhachHang(f["email"]));
                     Session["user"] = kh;
                 }
                 else
@@ -90,5 +94,5 @@ namespace Tutorial.Controllers
             }
             return View();
         }
-	}
+    }
 }
