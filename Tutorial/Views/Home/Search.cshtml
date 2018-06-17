@@ -10,8 +10,8 @@
         <div>ABC</div>
     </a>
 
-    <form>
-        <input type="text" placeholder="Nhập từ khóa cần tìm..">
+    <form action="@Url.Action("ListSachTimKiem", "Sach")" method="POST">
+        <input type="text" placeholder="Nhập từ khóa cần tìm.." name="chuoiTimKiem">
         <button type="submit">Tìm kiếm</button>
     </form>
 </body>
