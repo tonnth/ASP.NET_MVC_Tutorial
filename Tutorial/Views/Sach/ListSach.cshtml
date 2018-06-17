@@ -58,7 +58,9 @@
                         <div>@sach.getTenSach()</div>
                         <div> @String.Format("{0:0,0}", (@sach.getGiaBan() * (100 - @sach.getKhuyenMai())) / 100) VNĐ</div>
                     </a>
-                    <a href="@Url.Action("themgiohang", "Cart", new {@maSach = sach.getMaSach(),@soLuongMua=1})" style="margin-top:310px; background-color:orange;margin-left:-70px">Thêm hàng</a>
+                    <a href="@Url.Action("themgiohang", "Cart", new {@maSach = sach.getMaSach(),@soLuongMua=1})" 
+                       class="btn-cart"
+                       >Thêm hàng</a>
                 </div>
 
             }
