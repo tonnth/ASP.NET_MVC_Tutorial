@@ -40,20 +40,7 @@
                 }
             </select>
         </div>
-        <div>
-            <label>So xu su dung</label>
-            <input type="range" style="width:30%;cursor:pointer" min="0" max="@kh.getSoXuTichLuy()" value="0" step="100" onchange="showValue(this.value)" name="xu" />
-            <br /><span id="range" style="font-weight: bold">Không dùng xu</span>
-            <script type="text/javascript">
-                function showValue(newValue) {
-                    if (newValue == 0)
-                        document.getElementById("range").innerHTML = "Không dùng xu";
-                    else
-                        document.getElementById("range").innerHTML = "Dùng " + newValue + " xu, bạn được giảm: " + (newValue).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " VND"
-                }
-            </script>
-
-        </div>
+        
         <div>
             <label>Dia Chi</label>
             <input type="text" name="diaChi" />
