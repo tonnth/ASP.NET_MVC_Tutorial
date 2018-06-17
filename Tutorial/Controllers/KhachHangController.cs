@@ -94,5 +94,56 @@ namespace Tutorial.Controllers
             }
             return View();
         }
+        public ActionResult thongtinkhachhang()
+        {
+            return View();
+        }
+        //Xác nhận mua hàng
+        [HttpPost]
+        public ActionResult thongtinkhachhang(FormCollection f)
+        {
+            String error = "";
+            Cart cart = (Cart)Session["cart"];
+            if (string.IsNullOrEmpty(f["email"]))
+            {
+                ViewBag.message2 = "Email không được để trống";
+                error += "Email không được để trống";
+            }
+            if (string.IsNullOrEmpty(f["pass"]))
+            {
+                ViewBag.message3 = "Mật khẩu không được để trống";
+                error += "Mật khẩu không được để trống";
+            }
+            if (error.Equals(""))
+            {
+                KhachHang khachHang = new KhachHang();
+                //New
+                if (KhachHangDAO.checkEmail(f["email"]))
+                {
+                    khachHang = KhachHangDAO.loginKhachHang(f["email"], MD5.encryption(f["pass"]));
+                }
+                else
+                {
+                    khachHang = null;
+                    error = "Chưa đăng ký khách hàng trên hệ thống";
+                }
+                //
+                if (khachHang != null)
+                {
+                    Session["user"] = khachHang;
+                    return Redirect("~/HoaDon/hoadon");
+                }
+                else
+                {
+                    if (error.Equals(""))
+                    {
+                        error = "Mật khẩu đăng nhập không đúng";
+                    }
+                }
+                if (!error.Equals(""))
+                    ViewBag.error = error;
+            }
+            return View();
+        }
     }
 }
